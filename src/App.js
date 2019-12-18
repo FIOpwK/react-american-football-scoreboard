@@ -7,6 +7,7 @@ function App() {
   //TODO: STEP 2 - Establish your application's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [home, setScore] = useState(0);
   const [away, setScoreAway] = useState(0);
+  const [play, setClock] = useState(1);
 
   const touchDownHome = e => {
     setScore(home + 7);
@@ -28,6 +29,28 @@ function App() {
     setScoreAway(away + 3);
     console.log('clicked fieldGoalAway');
   };
+
+  const changeQuarter = e => {
+    const q = document.querySelector('.quarter__value');
+    const text = 'OT';
+    q.textContent = `${play}`;
+    // setClock(play + 1);
+    if (play > 4) {
+      q.textContent = `${text}`;
+    } else {
+      setClock(play + 1)
+    }
+
+
+
+
+    console.log('clicked quarterButton', q);
+
+  };
+
+
+
+
 
   return (
     <div className="container">
@@ -59,6 +82,8 @@ function App() {
           <button className="awayButtons__fieldGoal" onClick={fieldGoalAway}>Away Field Goal</button>
         </div>
       </section>
+      <button className="buttons" onClick={changeQuarter}>Quarter</button>
+
     </div>
   );
 }
