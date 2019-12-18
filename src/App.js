@@ -11,11 +11,13 @@ function App() {
   const [yard, setMarker] = useState(0);
   const [down, setDown] = useState(0);
   // const [timer, playClock] = useEffect();
+
+
   const touchDownHome = e => {
     //add 7 for home team score
     setScore(home + 7);
-    // yardStick(setMarker(yard - 10));
-    console.log('clicked touchDownHome');
+
+    console.log('touchDownHome');
 
 
   };
@@ -24,23 +26,21 @@ function App() {
     //add 7 for away team score
     setScoreAway(away + 7);
 
-    // yardStick(setMarker(yard + 10));
-    downMarker(setDown( 0));
-    console.log('clicked touchDownAway')
+    console.log('touchDownAway')
   };
 
   const fieldGoalHome = e => {
     //add 3 for home team score
     setScore(home + 3);
-    downMarker(setDown( 0));
-    console.log('clicked fieldGoalHome');
+
+    console.log('fieldGoalHome');
   };
 
   const fieldGoalAway = e => {
     //add 3 for away team score
     setScoreAway(away + 3);
-    downMarker(setDown(0));
-    console.log('clicked fieldGoalAway');
+
+    console.log('fieldGoalAway');
   };
 
   //STRETCH goal
@@ -49,10 +49,11 @@ function App() {
     const text = 'OT';
     q.textContent = `${play}`;
     //increment quarter by 1 unless greater than 4, then OT.
+    setClock(1);
     if (play > 4) {
       q.textContent = `${text}`;
     } else {
-      setClock(play + 1)
+      setClock( play + 1)
     }
 
     yardStick(setMarker( 0))
@@ -61,8 +62,10 @@ function App() {
 
   const yardStick = e => {
     const yardstick = document.querySelector('.toGo__value');
-    if (yard < 99) {
-      setMarker(yard + 10)
+    const text = 'goal';
+    setMarker(yard + 1)
+    if (yard > 99) {
+      setMarker(0)
     }
     yardstick.textContent = `${yard}`
   };
@@ -71,7 +74,8 @@ function App() {
     const marker = document.querySelector('.down__value');
     setDown(down + 1);
     if (down > 3) {
-      setDown( 0);
+      setDown( 1);
+
     }
         marker.textContent = `${down}`
 
