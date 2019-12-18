@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -10,11 +10,11 @@ function App() {
   const [play, setClock] = useState(1);
   const [yard, setMarker] = useState(0);
   const [down, setDown] = useState(0);
-
+  // const [timer, playClock] = useEffect();
   const touchDownHome = e => {
     //add 7 for home team score
     setScore(home + 7);
-    yardStick(setMarker(yard - 10));
+    // yardStick(setMarker(yard - 10));
     console.log('clicked touchDownHome');
 
 
@@ -24,7 +24,7 @@ function App() {
     //add 7 for away team score
     setScoreAway(away + 7);
 
-    yardStick(setMarker(yard + 10));
+    // yardStick(setMarker(yard + 10));
     downMarker(setDown( 0));
     console.log('clicked touchDownAway')
   };
@@ -114,6 +114,8 @@ function App() {
       {/*added buttons for STRETCH*/}
       <button className="buttons" onClick={changeQuarter}>Quarter</button>
       <button className="buttons" onClick={downMarker}>Down Marker</button>
+      <button className="buttons" onClick={yardStick}>Yard Stick</button>
+
 
     </div>
   );
