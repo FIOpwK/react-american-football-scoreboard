@@ -62,7 +62,7 @@ function App() {
 
   const yardStick = e => {
     const yardstick = document.querySelector('.toGo__value');
-    const text = 'goal';
+   
     setMarker(yard + 1)
     if (yard > 99) {
       setMarker(0)
