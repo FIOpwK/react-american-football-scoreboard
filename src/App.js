@@ -10,41 +10,41 @@ function App() {
   const [play, setClock] = useState(1);
 
   const touchDownHome = e => {
+    //add 7 for home team score
     setScore(home + 7);
     console.log('clicked touchDownHome');
 
   };
 
   const touchDownAway = e => {
+    //add 7 for away team score
     setScoreAway(away + 7);
-    console.log('clicked touchDownAway' )
-  }
+    console.log('clicked touchDownAway')
+  };
 
   const fieldGoalHome = e => {
+    //add 3 for home team score
     setScore(home + 3);
     console.log('clicked fieldGoalHome');
   };
 
   const fieldGoalAway = e => {
+    //add 3 for away team score
     setScoreAway(away + 3);
     console.log('clicked fieldGoalAway');
   };
 
+  //STRETCH goal
   const changeQuarter = e => {
     const q = document.querySelector('.quarter__value');
     const text = 'OT';
     q.textContent = `${play}`;
-    // setClock(play + 1);
+    //increment quarter by 1 unless greater than 4, then OT.
     if (play > 4) {
       q.textContent = `${text}`;
     } else {
       setClock(play + 1)
     }
-
-
-
-
-    console.log('clicked quarterButton', q);
 
   };
 
