@@ -8,29 +8,38 @@ function App() {
   const [home, setScore] = useState(0);
   const [away, setScoreAway] = useState(0);
   const [play, setClock] = useState(1);
+  const [yard, setMarker] = useState(0);
+  const [down, setDown] = useState(0);
 
   const touchDownHome = e => {
     //add 7 for home team score
     setScore(home + 7);
+    yardStick(setMarker(yard - 10));
     console.log('clicked touchDownHome');
+
 
   };
 
   const touchDownAway = e => {
     //add 7 for away team score
     setScoreAway(away + 7);
+
+    yardStick(setMarker(yard + 10));
+    downMarker(setDown( 0));
     console.log('clicked touchDownAway')
   };
 
   const fieldGoalHome = e => {
     //add 3 for home team score
     setScore(home + 3);
+    downMarker(setDown( 0));
     console.log('clicked fieldGoalHome');
   };
 
   const fieldGoalAway = e => {
     //add 3 for away team score
     setScoreAway(away + 3);
+    downMarker(setDown(0));
     console.log('clicked fieldGoalAway');
   };
 
@@ -45,6 +54,26 @@ function App() {
     } else {
       setClock(play + 1)
     }
+
+    yardStick(setMarker( 0))
+
+  };
+
+  const yardStick = e => {
+    const yardstick = document.querySelector('.toGo__value');
+    if (yard < 99) {
+      setMarker(yard + 10)
+    }
+    yardstick.textContent = `${yard}`
+  };
+
+  const downMarker = e => {
+    const marker = document.querySelector('.down__value');
+    setDown(down + 1);
+    if (down > 3) {
+      setDown( 0);
+    }
+        marker.textContent = `${down}`
 
   };
 
@@ -82,7 +111,9 @@ function App() {
           <button className="awayButtons__fieldGoal" onClick={fieldGoalAway}>Away Field Goal</button>
         </div>
       </section>
+      {/*added buttons for STRETCH*/}
       <button className="buttons" onClick={changeQuarter}>Quarter</button>
+      <button className="buttons" onClick={downMarker}>Down Marker</button>
 
     </div>
   );
