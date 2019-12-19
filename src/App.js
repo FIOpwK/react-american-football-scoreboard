@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useMemo} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -10,12 +10,27 @@ function App() {
     const [play, setClock] = useState(1);
     const [yard, setMarker] = useState(0);
     const [down, setDown] = useState(0);
-    const [ball, setBall] = useState(1)
-    const [time, setTime] = useState(0)
-    // const [seconds, setSeconds] = useState(0);
-    // const [active, setActive] = useState(false);
+    const [ball, setBall] = useState(1);
+    const [time, setTime] = useState(0);
+  const [a, b] =  useState(false);
+
+  // const [active, setActive] = useState(false);
+class MakeDiv extends React.Component {
+  // const = constructor(){}
+  super(props);
 
 
+  constructor(props);  {
+}
+  this.state = ((a, b) => {});
+  render() {
+    return (<div onClick={play}>Hello</div>);
+  }
+
+  render() {
+    return (<div>World</div>);
+  };
+}
     const touchDownHome = e => {
         //add 7 for home team score
         setScore(home + 7);
@@ -99,7 +114,7 @@ function App() {
     const timer = e => {
         const t = document.querySelector('.timer')
         const d = new Date();
-        const n = d.getHours();
+        const n = d.getSeconds();
 
 
         t.textContent = `${n}`
@@ -110,27 +125,14 @@ function App() {
         setScoreAway(0);
         setBall(1);
         setClock(1)
-        toggle_ball();
+        // toggle_ball();
 
     }
-    //
-    // useEffect(() => {
-    //   let interval = null;
-    //   if (active) { interval = setInterval(() => {setSeconds(seconds => seconds - 1)}, 150000); }
-    //   else if (!active && seconds !== 0) { clearInterval(interval);  }
-    //
-    //   return () => clearInterval(interval);
-    //
-    // }, [ active, seconds]);
-    //
 
 
     return (
         <div className="container">
             {/*added buttons for STRETCH*/}
-
-
-
         <button onClick={downMarker}>Down Marker</button>
         <button onClick={changeQuarter}>Quarter</button>
         <button onClick={timer}>Timer</button>
