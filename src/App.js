@@ -10,7 +10,16 @@ function App() {
   const [play, setClock] = useState(1);
   const [yard, setMarker] = useState(0);
   const [down, setDown] = useState(0);
-  // const [timer, playClock] = useEffect();
+  const [ball, setBall] = useState(1)
+  const [time, setTime] = useState(0)
+  // const [seconds, setSeconds] = useState(0);
+  // const [active, setActive] = useState(false);
+
+
+
+
+
+
 
 
   const touchDownHome = e => {
@@ -56,13 +65,13 @@ function App() {
       setClock( play + 1)
     }
 
-    yardStick(setMarker( 0))
+    // yardStick(setMarker( 0))
 
   };
 
   const yardStick = e => {
     const yardstick = document.querySelector('.toGo__value');
-   
+
     setMarker(yard + 1)
     if (yard > 99) {
       setMarker(0)
@@ -74,19 +83,64 @@ function App() {
     const marker = document.querySelector('.down__value');
     setDown(down + 1);
     if (down > 3) {
-      setDown( 1);
-
+      setDown(1);
     }
         marker.textContent = `${down}`
 
   };
 
+  const toggle_ball = () => { setBall(ball - 1) }
 
+
+  const toggle = (e) => {
+    const ball_on = document.querySelector('.ballOn__value')
+    setBall(ball + 1);
+
+    ball_on.textContent = `${ball}`;
+  }
+
+
+  const timer = e => {
+    const t = document.querySelector('.timer')
+    const d = new Date();
+    const n = d.getHours();
+
+
+    t.textContent = `${n}`
+  }
+
+  const reset = (e) => {
+    setScore(0);
+    setScoreAway(0);
+    setBall(1);
+    setClock(1)
+    toggle_ball();
+
+  }
+  //
+  // useEffect(() => {
+  //   let interval = null;
+  //   if (active) { interval = setInterval(() => {setSeconds(seconds => seconds - 1)}, 150000); }
+  //   else if (!active && seconds !== 0) { clearInterval(interval);  }
+  //
+  //   return () => clearInterval(interval);
+  //
+  // }, [ active, seconds]);
+  //
 
 
 
   return (
     <div className="container">
+      <button onClick={toggle}>Ball On</button>
+      {/*added buttons for STRETCH*/}
+      <button onClick={changeQuarter}>Quarter</button>
+      <button onClick={downMarker}>Down Marker</button>
+      <button onClick={timer}>Timer</button>
+
+      <button onClick={yardStick}>To Go</button>
+      <button onClick={reset}>Reset</button>
+
       <section className="scoreboard">
         <div className="topRow">
           <div className="home">
@@ -115,10 +169,6 @@ function App() {
           <button className="awayButtons__fieldGoal" onClick={fieldGoalAway}>Away Field Goal</button>
         </div>
       </section>
-      {/*added buttons for STRETCH*/}
-      <button className="buttons" onClick={changeQuarter}>Quarter</button>
-      <button className="buttons" onClick={downMarker}>Down Marker</button>
-      <button className="buttons" onClick={yardStick}>Yard Stick</button>
 
 
     </div>
