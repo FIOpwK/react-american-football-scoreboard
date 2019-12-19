@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React, {useState, useEffect, useMemo} from "react";
+import React, {useState} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -12,25 +12,30 @@ function App() {
     const [down, setDown] = useState(0);
     const [ball, setBall] = useState(1);
     const [time, setTime] = useState(0);
-  const [a, b] =  useState(false);
+    // const [a, b] =  useState(false);
 
   // const [active, setActive] = useState(false);
-class MakeDiv extends React.Component {
+// class MakeDiv extends React.Component { constructor(){} }
   // const = constructor(){}
-  super(props);
 
 
-  constructor(props);  {
-}
-  this.state = ((a, b) => {});
-  render() {
-    return (<div onClick={play}>Hello</div>);
-  }
-
-  render() {
-    return (<div>World</div>);
-  };
-}
+//
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       render()
+//       return(
+//     <div onClick={play}>Hello</div>
+//   )
+//     ;
+//
+//
+//     render()
+//     return (<div>World</div>);
+//
+//   }
+//   }
+// }
     const touchDownHome = e => {
         //add 7 for home team score
         setScore(home + 7);
@@ -113,18 +118,19 @@ class MakeDiv extends React.Component {
 
     const timer = e => {
         const t = document.querySelector('.timer')
-        const d = new Date();
-        const n = d.getSeconds();
-
+        const n = '15:00';
+        setTime(time);
+        console.log(time);
 
         t.textContent = `${n}`
-    }
+    }; console.log(toggle_ball, useState);
 
     const reset = (e) => {
         setScore(0);
         setScoreAway(0);
         setBall(1);
-        setClock(1)
+        setClock(1);
+        setTime(0)
         // toggle_ball();
 
     }
